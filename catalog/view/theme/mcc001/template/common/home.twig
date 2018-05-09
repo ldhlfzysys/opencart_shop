@@ -1,0 +1,20 @@
+{{ header }}
+<div class="container columns">
+    <div class="row">
+        <div class="col-xs-12">{{ content_top }}</div>
+    </div>
+    <div class="row">{{ column_left }}
+        {% if column_left and column_right %}
+        {% set class = 'col-sm-4 col-md-6' %}
+        {% elseif column_left or column_right %}
+        {% set class = 'col-sm-8 col-md-9' %}
+        {% else %}
+        {% set class = 'col-sm-12' %}
+		{% endif %}
+
+        <div class="{{ class }}">
+            <div id="content" >{{ content_bottom }}</div></div>
+        {{ column_right }}</div>
+</div>
+{{ footer }}
+

@@ -1,0 +1,1081 @@
+@import "compass";
+@import "_variables-theme"; 
+@import "bootstrap/_variables";
+
+
+body {
+    font-family: $font-custom;
+    font-weight: 400;
+    color: $color-font;
+    -webkit-font-smoothing: antialiased;
+    @if $body-bg-mobile != none { background: $body-bg-mobile;}
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #444;
+}
+/* default font size */
+.fa {
+    font-size: 14px;
+}
+
+.btn-lg .fa { 
+    font-size: 18px;
+    margin-right: 5px;
+} 
+/* Override the bootstrap defaults */
+h1 {
+    font-size: 27px;
+    margin: 0 0 15px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 21px;
+}
+h4 {
+    font-size: 15px;
+}
+h5 {
+    font-size: 12px;
+}
+h6 {
+    font-size: 10.2px;
+}
+a {
+    color: $a-font-body;
+    &:hover {
+        text-decoration: none;
+        color: $a-hover-font-body;
+    }
+    &:focus { 
+        outline: none medium;
+        outline-offset: 0;
+    }
+}
+
+legend {
+    font-size: 18px;
+    padding: 7px 0px
+}
+label {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+
+/* Fix some bootstrap issues */
+span.hidden-xs, span.hidden-sm, span.hidden-md, span.hidden-lg {
+    display: inline;
+}
+
+.nav-tabs {
+    margin-bottom: 15px;
+}
+div.required .control-label:before {
+    content: '* ';
+    color: #F00;
+    font-weight: bold;
+}
+
+.form-control:focus {
+    border-color: $btn_search;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba($btn_search, 0.6);
+}
+
+/*img*/
+
+.img-thumbnail {
+    border: none medium;
+    @include border-radius(0);
+}
+
+.ie8, .ie9 {
+    .img-responsive{ 
+        width: auto;
+    }
+}
+
+/* Gradent to all drop down menus */
+.dropdown-menu li > a:hover {
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+    background-color: $color-theme;
+    @if $button-gradient == true { 
+        @include background-image($type-gradient);
+        background-repeat: repeat-x;
+    }
+}
+
+/*tables */
+@if $bg-table-head != none {
+    .table-bordered > thead > tr > td { 
+        background: $bg-table-head;
+    }
+}
+
+.total > tbody > tr:last-child > td { font-weight: bold;}
+
+
+/* Header */
+
+#header {
+    background: $bg-header-mobile;
+}
+
+
+/* search */
+#header #search { display: none;}
+
+#search {
+    margin-bottom: 10px;
+}
+
+/* cart */
+.cart_info ul { margin-bottom: 0}
+#cart {
+    > .btn {
+        font-size: 12px;
+        line-height: 18px;
+        padding: 0;
+    }
+
+    .dropdown-menu {
+        z-index: 1001;
+        color: $color-font;
+        a { color: $a-font-body;
+            &:hover { color: $a-hover-font-body;}
+        }
+        table {
+            margin-bottom: 10px;
+            &.table > tbody > tr:first-child > td {
+                border-top: none medium;
+            }
+            td {vertical-align: middle;}
+        }
+
+        li > div {
+            min-width: 427px;
+            padding: 0 10px;
+        }
+
+        li p {
+            margin: 20px 0;
+        }
+    }
+}
+
+
+
+/* user info*/
+
+#header .user_info { display: none;}
+
+/* menu */
+.sidr-inner .flexnav {display: block;}
+.flexnav {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    transition: none;
+    -webkit-transform-style: preserve-3d; // stop webkit flicker
+    overflow: hidden;
+    margin: 0 auto;
+    width: 100%;
+    display: none;
+
+    li {
+        font-size: 100%;
+        position: relative;
+        overflow: hidden;
+        a {
+            position: relative;
+            display: block;
+            padding: .96em;
+            z-index: 2;
+            overflow: hidden;
+        }
+        ul {
+            width: 100%;   
+
+            li {
+                font-size: 100%;
+                position: relative;
+                overflow: hidden;		
+            }
+        }
+        ul.flexnav-show {
+
+            li {
+                overflow: visible;
+            }
+        }	
+
+        ul li a {
+            display: block;
+        }
+    }
+
+}
+
+.touch-button, .sidr-inner .btn-link .fa-angle-down {
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    background: #acaca1;
+    background: rgba(0,0,0,.075);
+    text-align: center;
+    line-height: 48px;
+    margin-right: 0;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+
+
+
+/* content */
+.common-home #header + .container {padding-top: 30px;}
+#header + .container {padding-top: 10px;}
+#content {
+    margin-bottom: 20px;
+}
+
+
+#column-left, #column-right {
+    margin-bottom: 20px;
+    .product-layout > [class*="col"] , .oc-banner > [class*="col"] { width: 100%; }
+}
+
+
+
+/* footer */
+#footer {
+
+    .content-footer {
+        background-color: $bg-content-footer;
+        color: $color-content-footer ;
+        @if $footer-gradient == true {
+            @include background-image($type-gradient);
+            background-repeat: repeat-x; 
+        }
+        @if $border-color-footer != none  {
+            border-color: $border-color-footer;
+            border-style: solid;
+            border-width: $border-width-footer;
+        }
+
+        h5 {
+            color : $title-color-content-footer;
+            font-family: $font-custom;
+            font-size: 1.3em;
+            padding: 0 0 10px;
+            display: block;
+            position: relative;
+            cursor: pointer;
+
+            &:after, &.active:after  { 
+                font-family: $font-icon;
+                font-size: 1.3em;
+                font-weight: normal;
+                position: absolute;
+                right: 10px;
+                content: "\f107"; 
+            }
+            &.active:after { content: "\f106"; }
+        }
+        .block-footer { 
+            border-bottom: 1px solid darken($bg-content-footer , 10%) ;
+        }
+        a { 
+            color : $link-content-footer ;
+            padding: 5px 0;
+            display: block;
+            &:hover {color: $link-hover-content-footer;}
+        }
+
+    }
+
+    .powered-footer { 
+        background-color: $bg-content-powered;
+        @if $border-content-powered != none  {border-top: $border-content-powered;}
+        color: $color-content-powered ;
+        padding: 10px 0;
+        font-size: 0.8em ;
+        a { 
+            color : $link-content-powered ;
+            &:hover {color: $link-hover-content-powered;}
+        }
+    }
+    
+    .logo-payment li {
+        width: 32px;
+        height: 21px;
+        margin-top: 5px;
+        background: url("../image/payment-logo.png") no-repeat scroll top left transparent;
+        &.mastercard { background-position: -32px 0 ;}
+        &.paypal { background-position: -64px 0 ;}
+        &.visa{ background-position: -96px 0 ;}
+    }
+
+}
+
+
+
+/* alert */
+.alert {
+    padding: 8px 14px 8px 14px;
+}
+
+/* breadcrumb */
+.breadcrumb {
+    background: none repeat scroll 0 0 transparent;
+    margin: 0 0 10px;
+    padding: 20px 10px;
+}
+
+.breadcrumb a > .fa {
+    font-size: 15px;
+    margin: 0
+}
+
+
+
+.well {
+    background-color: $bg-well;
+    border-color: $border-color;
+    border-width: $border-width-well;
+    @if $box-shadow-well == none { box-shadow: $box-shadow-well; }
+}
+
+.form-horizontal .control-label {display: block;}
+
+
+.pagination {
+    margin: 0;
+    display: block;
+}
+
+.showing {padding: 6px 0 ;}
+
+
+/* buttons */
+.buttons {
+    margin: 1em 0;
+    overflow: auto;
+}
+
+@if $btn_default-style == btn-style-1 {
+    .btn-group .btn-default {border-color: darken( $btn_default , 5%); }
+
+    .btn-default {
+        color: $btn-default_color;
+        background-color: $btn_default;
+        border-color: $btn_default;
+        @if $button-gradient == true {
+            @include background-image($type-gradient);
+            background-repeat: repeat-x; 
+        }
+        @if $button-text-shadow == true { 
+            @include text-shadow($type-text-shadow); 
+        }
+
+
+        &:hover, &:active, &:focus, &.active, &.disabled, &[disabled] {
+            background-color: $btn_default_hover ;
+            border-color:  $btn_default_hover;
+            color: $btn_default_color;
+        }
+    }
+}
+
+@else if $btn_default-style == btn-style-2 {
+    .btn-group .btn-default {border-color: darken( $btn_default , 5%); }
+
+    .btn-default {
+        color: $btn-default_color;
+        background-color: $btn_default;
+        border-color: $btn_default;
+        @include box-shadow(0 -2px 0 rgba(0, 0, 0, 0.15) inset);
+
+        @if $button-gradient == true {
+            @include background-image($type-gradient);
+            background-repeat: repeat-x; 
+        }
+        @if $button-text-shadow == true { 
+            @include text-shadow($type-text-shadow); 
+        }
+
+
+        &:hover, &:active, &:focus, &.active, &.disabled, &[disabled] {
+            background-color: $btn_default_hover ;
+            border-color:  $btn_default_hover;
+            color: $btn_default_color;
+        }
+    }
+}
+
+@else if $btn_default-style == btn-style-3 {
+
+    .btn-default {
+        color: $btn-default_color;
+        background-color: transparent;
+        border-color: $btn_default;
+        border-width: 2px;
+
+        &:hover, &:active, &:focus, &.active, &.disabled, &[disabled] {
+            background-color: $btn_default_hover ;
+            border-color: $btn_default_hover;
+            color: #fff;
+        }
+    }
+}
+
+@else {
+    .btn-default {
+        color: $btn_default-color;
+        background-color: $btn_default;
+        border-color: darken($btn_default, 10%) ;
+        @if $button-gradient == true {
+            @include background-image($type-gradient);
+            background-repeat: repeat-x; 
+        }
+        @if $button-text-shadow == true { 
+            @include text-shadow($type-text-shadow); 
+        }
+        &:hover, &:active, &:focus, &.active, &.disabled, &[disabled] {
+            background-color: $btn_default_hover ;
+            border-color: $btn_primary_hover;
+            color: $btn_default_color;
+        }
+    }
+}
+
+
+@if $btn_primary-style == btn-style-1 {
+    .btn-group .btn-primary {border-color: darken( $btn_primary , 5%); }
+
+    .btn-primary {
+        color: $btn-primary_color;
+        background-color: $btn_primary;
+        border-color: $btn_primary;
+        @if $button-gradient == true {
+            @include background-image($type-gradient);
+            background-repeat: repeat-x; 
+        }
+        @if $button-text-shadow == true { 
+            @include text-shadow($type-text-shadow); 
+        }
+
+
+        &:hover, &:active, &:focus, &.active, &.disabled, &[disabled] {
+            background-color: $btn_primary_hover ;
+            border-color:  $btn_primary_hover;
+            color: $btn_primary_color;
+        }
+    }
+}
+
+@else if $btn_primary-style == btn-style-2 {
+    .btn-group .btn-primary {border-color: darken( $btn_primary , 5%); }
+
+    .btn-primary {
+        color: $btn-primary_color;
+        background-color: $btn_primary;
+        border-color: $btn_primary;
+        @include box-shadow(0 -2px 0 rgba(0, 0, 0, 0.15) inset);
+
+        @if $button-gradient == true {
+            @include background-image($type-gradient);
+            background-repeat: repeat-x; 
+        }
+        @if $button-text-shadow == true { 
+            @include text-shadow($type-text-shadow); 
+        }
+
+
+        &:hover, &:active, &:focus, &.active, &.disabled, &[disabled] {
+            background-color: $btn_primary_hover ;
+            border-color:  $btn_primary_hover;
+            color: $btn_primary_color;
+        }
+    }
+}
+
+@else if $btn_primary-style == btn-style-3 {
+
+    .btn-primary {
+        color: $btn-primary_color;
+        background-color: transparent;
+        border-color: $btn_primary;
+        border-width: 2px;
+
+        &:hover, &:active, &:focus, &.active, &.disabled, &[disabled] {
+            background-color: $btn_primary_hover ;
+            border-color: $btn_primary_hover;
+            color: #fff;
+        }
+    }
+}
+
+@else {
+    .btn-primary {
+        color: $btn_primary-color;
+        background-color: $btn_primary;
+        border-color: darken($btn_primary, 10%) ;
+        @if $button-gradient == true {
+            @include background-image($type-gradient);
+            background-repeat: repeat-x; 
+        }
+        @if $button-text-shadow == true { 
+            @include text-shadow($type-text-shadow); 
+        }
+        &:hover, &:active, &:focus, &.active, &.disabled, &[disabled] {
+            background-color: darken( $btn_primary,5%) ;
+            border-color: darken( $btn_primary,5%);
+            color: $btn_primary_color;
+        }
+    }
+}
+
+.btn-warning {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #faa732;
+    background-image: linear-gradient(to bottom, #fbb450, #f89406);
+    background-repeat: repeat-x;
+    border-color: #f89406 #f89406 #ad6704;
+}
+.btn-warning:hover, .btn-warning:active, .btn-warning.active, .btn-warning.disabled, .btn-warning[disabled] {
+    box-shadow: inset 0 1000px 0 rgba(0, 0, 0, 0.1);
+}
+.btn-danger {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #da4f49;
+    background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+    background-repeat: repeat-x;
+    border-color: #bd362f #bd362f #802420;
+}
+.btn-danger:hover, .btn-danger:active, .btn-danger.active, .btn-danger.disabled, .btn-danger[disabled] {
+    box-shadow: inset 0 1000px 0 rgba(0, 0, 0, 0.1);
+}
+.btn-success {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #5bb75b;
+    background-image: linear-gradient(to bottom, #62c462, #51a351);
+    background-repeat: repeat-x;
+    border-color: #51a351 #51a351 #387038;
+}
+.btn-success:hover, .btn-success:active, .btn-success.active, .btn-success.disabled, .btn-success[disabled] {
+    box-shadow: inset 0 1000px 0 rgba(0, 0, 0, 0.1);
+}
+.btn-info {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #df5c39;
+    background-image: linear-gradient(to bottom, #e06342, #dc512c);
+    background-repeat: repeat-x;
+    border-color: #dc512c #dc512c #a2371a;
+}
+.btn-info:hover, .btn-info:active, .btn-info.active, .btn-info.disabled, .btn-info[disabled] {
+    background-image: none;
+    background-color: #df5c39;
+}
+.btn-link {
+    border-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    color: $a-font-body;
+    padding: 6px;
+    &:hover { color: $a-hover-font-body;}
+} 
+
+
+.btn-inverse {
+    color: #ffffff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    background-color: #363636;
+    background-image: linear-gradient(to bottom, #444444, #222222);
+    background-repeat: repeat-x;
+    border-color: #222222 #222222 #000000;
+}
+.btn-inverse:hover, .btn-inverse:active, .btn-inverse.active, .btn-inverse.disabled, .btn-inverse[disabled] {
+    background-color: #222222;
+    background-image: linear-gradient(to bottom, #333333, #111111);
+}
+
+a > .fa, .btn-link > .fa { 
+    margin-right: 10px;
+    display: inline-block;
+    width: 15px;
+}
+
+/* list group */
+.active-group { 
+    background: $btn_default ;
+    color: $btn_default_color;
+    border: 1px solid $border-color;
+    @if $button-gradient == true { 
+        @include background-image($type-gradient);
+        background-repeat: repeat-x;
+    }
+    @if $button-text-shadow == true { 
+        @include text-shadow($type-text-shadow); 
+    }
+}
+
+
+.list-group a  {
+    border: 1px solid $border-color;
+    color: $color-font;
+    padding: 8px 12px;
+
+    &.active, &.active:hover, &:hover {
+        @extend .active-group ;
+    }
+}
+
+.account-account .view-account, 
+.account-edit .edit-account,
+.account-register .new-register,
+[class*="account-address"] .address-list, 
+.account-download .download-list,
+.account-forgotten .forgotten-page,
+.account-password .password-list,
+.account-login .my-account,
+.account-newsletter .newsletter-list,
+[class*="account-order"] .order-history,
+[class*="account-return"] .return-list,
+[class*="account-recurring"] .recurring-list,
+.account-reward .reward-list,
+.account-transaction .transaction-list,
+.account-wishlist .wishlist-list{
+    @extend .active-group ;
+}
+
+
+#column-left, #column-right {
+    .list-group {
+        @if $block-shadow != none { 
+            @include box-shadow($block-shadow);
+            a  {
+                border-width: 0 0 2px;
+            }
+        }
+    }
+}
+
+/* panel */
+
+.panel-default {
+    border-color: transparent;
+    @include box-shadow(none); 
+
+    > .panel-heading {
+        background-color: $panel-heading-bg;
+        border-color: transparent;
+        color: $panel-heading-color;
+        @if $title-block-gradient == true { 
+            @include background-image($type-gradient);
+            background-repeat: repeat-x;
+        }
+        @if $title-block-text-shadow == true { 
+            @include text-shadow($type-text-shadow); 
+        }
+        + .panel-collapse > .panel-body {
+            @if  $panel-border-bottom-color != none {  border-top :$panel-border-bottom-color ;}
+        }
+
+    }
+    .panel-title > a { 
+        display: block;
+        &:hover { 
+            color: $panel-heading-color;
+        }
+
+        &:after {
+            content: "\f106";
+            font-family: $font-icon;
+            float: right;
+        }
+        &.collapsed:after { content: "\f107";}
+    }
+} 
+
+.panel-body {
+    padding: 15px 5px;
+}
+
+.panel-default > .panel-heading + .panel-collapse > .panel-body
+
+
+/* carousel */
+.carousel-caption {
+    color: #FFFFFF;
+    text-shadow: 0 1px 0 #000000;
+}
+.carousel-control .icon-prev:before {
+    content: '\f053';
+    font-family: FontAwesome;
+}
+.carousel-control .icon-next:before {
+    content: '\f054';
+    font-family: FontAwesome;
+}
+
+/* product list */
+
+#content .product-block {
+    margin-bottom: 20px;
+
+    h3 {
+        margin: 0 0 30px ;
+
+        @if $content-title-decoration== deco-1 {
+            border-bottom: 1px solid $border-color;
+            margin-top: 20px;
+            padding: 5px 0 5px;
+        }
+        @else if $content-title-decoration == deco-2 { 
+            padding-bottom: 15px;
+            padding-top: 10px;
+            border-left: 2px solid $color-theme;
+            margin-top: 10px;
+            padding: 10px 0 10px 15px;
+            background-color: $bg-well;
+        }
+        @else if $content-title-decoration == deco-3 { 
+            padding-bottom: 15px;
+            padding-top: 10px;
+            border-bottom: 1px solid $border-color;
+            position: relative;
+            &:after {
+                position: absolute;
+                bottom: -1px;
+                content: " ";
+                display: block;
+                height: 2px;
+                width: 70px;
+                background-color: $color-theme; 
+            }
+        }
+        @else if $content-title-decoration == deco-4 { 
+            padding-bottom: 15px;
+            padding-top: 10px;
+            text-align: center;
+            &:after, &:before {
+                content: " ";
+                display: inline-block;
+                height: 2px;
+                margin: 10px 10px 5px;
+                width: 70px;
+                background-color: $color-theme; 
+            }
+        }
+
+        @else if $content-title-decoration == deco-5 { 
+            padding :  10px 15px;
+            background-color: $content-bg-tittle ;
+            color: $content-color-tittle;
+            @if $border-list-style == full {margin-bottom: 0; }
+        }
+
+
+        @else if $content-title-decoration == deco-6 { 
+            padding :  10px 20px;
+            background-color: $content-bg-tittle;
+            color: $content-color-tittle;
+            display: inline-block;
+            @if $border-list-style == full {margin-bottom: 0; }
+            @if $title-block-gradient == true {
+                @include background-image($type-gradient);
+                background-repeat: repeat-x; 
+            }
+            @if $title-block-text-shadow == true{ 
+                @include text-shadow($type-text-shadow); 
+            }
+            @if $block-radius != none { @include border-radius ($border-radius-base $border-radius-base 0 0) }
+            + .product-layout {border-top: 2px solid darken($color-theme, 5%); }
+        }
+
+        @else if $content-title-decoration == deco-7 { 
+            padding :  10px 20px;
+            background-color: $color-theme;
+            color: #fff;
+            display: inline-block;
+            position: relative;
+            @if $title-block-gradient == true {
+                @include background-image($type-gradient);
+                background-repeat: repeat-x; 
+            }
+            @if $title-block-text-shadow == true{ 
+                @include text-shadow($type-text-shadow); 
+            }
+            @if $block-radius != none { @include border-radius ($border-radius-base) }
+
+            &:after {
+                border-color:  $color-theme rgba(0, 0, 0, 0);
+                border-style: solid;
+                border-width: 8px 8px 0;
+                bottom: -8px;
+                content: "";
+                display: block;
+                left: 20px;
+                position: absolute;
+                width: 0;
+            }    
+        }
+    }
+}
+
+@if $border-list-style != none { 
+    .product-layout {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 20px;
+        border-left: 1px solid $border-color;
+        border-top: 1px solid $border-color;
+
+        .product-item {
+            border-right: 1px solid $border-color;
+            border-bottom: 1px solid $border-color;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+}
+
+
+.product-thumb {
+    display: block;
+
+    .image {
+        text-align: center;
+        padding-top: 10px;
+        img {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    h4 {
+        font-weight: bold;
+        color: $color-list-title;
+    }
+    .rating {
+        padding-bottom: 10px;
+        float: left;
+        width: 100%;
+    }
+    .description { display: none;}
+
+    .price {
+        color: $color-list-price;
+    }
+    .price-new {
+        font-weight: 600;
+    }
+    .price-old {
+        color: #999;
+        text-decoration: line-through;
+        margin-left: 10px;
+    }
+    .price-tax {
+        color: #999;
+        font-size: 12px;
+        display: block;
+    }
+    + .button-group {
+        display: none;
+
+    }
+}
+
+
+.caption {
+    padding: 0 10px;
+    min-height: 115px;
+    text-align: center;
+
+}
+
+/* product page */
+
+.rating p { font-size: 12px;}
+
+.rating .fa-stack {
+    font-size: 8px;
+}
+.rating .fa-star-o {
+    color: #999;
+    font-size: 15px;
+}
+.rating .fa-star {
+    color: #FC0;
+    font-size: 15px;
+}
+.rating .fa-star + .fa-star-o {
+    color: #E69500;
+}
+h2.price {
+    margin: 0;
+}
+.old-price { margin-bottom: 15px;}
+
+#preview-product {
+    @include border-radius(0px);
+    @include box-shadow(none);
+    border: 1px solid $border-color;
+}
+#slide-thumbs-product { 
+    li { margin-bottom: 10px }
+}
+
+.carousel-control.left, .carousel-control.right { 
+    background-image: none;
+    top: 40%;
+    color: rgba(0, 0, 0, 0.8);
+    i { font-size: 30px; }
+
+}
+
+.carousel-inner > .item {
+    text-align: center;
+    > img, > a > img { display: inline }
+}
+#product-desc { margin-bottom: 15px; }
+
+#price-block{
+    .affix{ position: static;
+    }
+}
+
+
+/*pagination*/
+
+.pagination {
+    > li > a, > li > span {
+        color: $color-font;
+        &:hover, &:focus { color: $color-font; }
+    }
+
+    > .active > a, > .active > a:hover, > .active > a:focus, > .active > span, > .active > span:hover, > .active > span:focus { 
+        background: $pagination-bg-selected ;
+        border-color: darken($pagination-bg-selected, 5%) ;
+        color: $pagination-selected-color ;
+        @if $button-gradient == true {
+            @include background-image($type-gradient);
+            background-repeat: repeat-x; 
+        }
+        @if $button-text-shadow == true { 
+            @include text-shadow($type-text-shadow); 
+        }
+    }
+
+}
+
+
+/*slides*/
+
+.container .owl-carousel {
+    @include border-radius(0px);
+    @include box-shadow(none);
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: none medium;
+}
+.common-home .container [id*="slideshow"] {
+    @if $block-radius != none { @include border-radius($block-radius);}
+    @if $block-shadow != none { @include box-shadow($block-shadow);}
+}
+
+.owl-carousel .slides img {
+    width: inherit;
+}
+.owl-carousel.carousel .slides img {
+    width: auto;
+}
+
+.owl-carousel .owl-buttons div i {
+    line-height: 30px;
+    height: 30px;
+    &:before { font-size: 30px}
+}
+
+.slides {
+    padding: 0;
+    margin:0;
+    list-style: none;
+}
+.slides li {
+    text-align: center;
+}
+.slides li img {
+    text-align: center;
+}
+
+
+/*Banner */
+
+.oc-banner {
+    margin: 0 0 20px 0 ;
+    .title-banner {display: none;}
+}
+
+
+[class*="product-product"] .oc-banner {
+    padding: 10px 15px;
+    @if $block-radius != none { @include border-radius($block-radius);}
+    @extend .well;
+
+    .row > div { 
+        display: table ;
+        margin: 8px 0;
+        .img-banner { 
+            float: left;
+        }
+        .title-banner {
+            display: table-cell;
+            vertical-align: middle;
+            line-height: 14px;
+            padding-left: 10px;
+        }
+    }
+}
+
+/*html block */
+
+.html-block { 
+    display: inline-block;
+    margin: 20px 0;
+    .media-left  i { 
+        background-color: $i-bg-color;
+        color: $i-color;
+        font-size: 35px;
+        padding: 15px;
+        @include border-radius(50px);
+        @include box-shadow(0 -2px 0 rgba(0, 0, 0, 0.15) inset);
+     }
+}
+
+
+/*rapid top*/ 
+
+.rapidtop {
+    bottom: -15px;
+    position: fixed;
+    right: -75px;
+    display: none;
+}
+
+@import "_medias";
+
+
+

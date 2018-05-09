@@ -1,0 +1,144 @@
+<footer id="footer">
+    <div class="content-footer">
+        <div class="container">
+            <div class="boxed">
+                <div class="row">
+                    {% if informations %}
+                    <div class="col-sm-3 block-footer">
+                        <h5>{{ text_information }}</h5>
+                        <ul class="list-unstyled toggle-footer">
+						    <li><a href="{{ blog }}">{{ text_blog }}</a></li>
+                            {% for information in informations %}
+                            <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+					
+					
+                    <div class="col-sm-3 block-footer">
+                        <h5>{{ text_service }}</h5>
+                        <ul class="list-unstyled toggle-footer">
+                            <li><a href="{{ contact }}">{{ text_contact }}</a></li>
+                            <li><a href="{{ return }}">{{ text_return }}</a></li>
+                            <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3 block-footer">
+                        <h5>{{ text_extra }}</h5>
+                        <ul class="list-unstyled toggle-footer">
+                            <li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
+                            <li><a href="{{ voucher }}">{{ text_voucher }}</a></li>
+                            <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
+                            <li><a href="{{ special }}">{{ text_special }}</a></li>
+                        </ul>
+                    </div>
+					
+					
+                    <div class="col-sm-3 block-footer">
+                        <h5>{{ text_account }}</h5>
+                        <ul class="list-unstyled toggle-footer">
+                            <li><a href="{{ account }}">{{ text_account }}</a></li>
+                            <li><a href="{{ order }}">{{ text_order }}</a></li>
+                            <li><a href="{{ wishlist }}">{{ text_wishlist }}</a></li>
+                            <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="powered-footer">
+        <div class="container">
+            <div class="boxed row">
+                <div class="col-xs-12 col-sm-6 hidden-xs">{{ powered }}</div> 
+				
+				
+                <div class="logo-payment col-xs-12 col-sm-6 text-right">
+                    <ul class="list-inline list-unstyled">
+                        <li class="cc-amex"></li>
+                        <li class="mastercard "></li>
+                        <li class="paypal"></li>
+                        <li class="visa"></li>
+                    </ul>
+                </div> 
+				
+				
+            </div>
+        </div>
+    </div>
+    <div class="rapidtop">
+        <button class="btn btn-rapidtop"><i class="fa fa-chevron-up"></i></button>
+    </div>
+</footer>
+</div>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        // initialize FlexNav
+        $(".flexnav").flexNav();
+
+        // Currency
+        $('#currency .currency-select').on('click', function(e) {
+            e.preventDefault();
+
+            $('#currency input[name=\'code\']').attr('value', $(this).attr('name'));
+
+            $('#currency').submit();
+        });
+
+        // Language
+        $('#language a').on('click', function(e) {
+            e.preventDefault();
+
+            $('#language input[name=\'code\']').attr('value', $(this).attr('href'));
+
+            $('#language').submit();
+        });
+
+        /* Search */
+        $('.sidr-inner input[name=\'search\']').parent().find('button').on('click', function() {
+            url = $('base').attr('href') + 'index.php?route=product/search';
+
+            var value = $('.sidr-inner input[name=\'search\']').val();
+
+            if (value) {
+                url += '&search=' + encodeURIComponent(value);
+            }
+
+            location = url;
+        });
+
+        $('.sidr-inner input[name=\'search\']').on('keydown', function(e) {
+            if (e.keyCode == 13) {
+                $('.sidr-inner input[name=\'search\']').parent().find('button').trigger('click');
+            }
+        });
+
+
+    });
+
+    $(window).resize(function(){
+
+        $('#price-block .affix-product').css('width',$('#price-block').width());
+
+        if($(window).width() < 768) {   
+            $('#footer h5').on('click', function(){
+                $(this).toggleClass('active').parent().find('.toggle-footer').collapse('toggle');
+            })
+            $('.toggle-footer').addClass('collapse').removeClass('in');
+        }
+        else
+        {
+            $('#footer h5').removeClass('active').off().parent().find('.toggle-footer').collapse('show').removeAttr('style');;
+
+        }
+    });
+</script>
+<!--
+OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
+Please donate via PayPal to donate@opencart.com
+//--> 
+
+</body></html>

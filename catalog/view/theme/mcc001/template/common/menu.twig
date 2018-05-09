@@ -1,0 +1,42 @@
+{% if categories %}
+<nav id="navigation">
+	<div class="boxed bg-navigation">
+		<div class="container">
+			<ul data-breakpoint="992" class="flexnav with-js lg-screen clearfix">
+				{% for category in categories %}
+				{% if category.children %}
+				<li><a href="{{ category.href }}" >{{ category.name }}</a>
+					<ul class="list-unstyled ul-col-{{ category.column }}">
+						{% for children in rray_chunk %}
+						{% if category.column  ==  1 %}
+						{% for child in children %}
+						<li><a href="{{ child.href }}">{{ child.name }}</a></li>
+						{% endfor %}
+						{% else %}
+						<li class="li-inline">
+							<div>
+								{% for child in children %}
+								<a href="{{ child.href }}">{{ child.name }}</a>
+								{% endfor %}
+							</div>
+						</li>
+						{% endif %} 
+						{% endfor %}
+
+					</ul>
+				</li>
+				 {% else %}
+				<li><a href="{{ category.href }}">{{ category.name }}</a></li>
+				{% endif %}
+				{% endfor %}
+				<li><a href="{{ blog }}">{{ text_blog }}</a></li>
+       			<li><a href="{{ press }}">{{ text_press }}</a></li>
+        		<li><a href="{{ faq }}">{{ text_faq }}</a></li>
+
+
+			</ul>
+
+		</div>
+	</div>
+</nav>
+{% endif %}

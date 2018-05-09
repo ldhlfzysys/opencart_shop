@@ -1,0 +1,17 @@
+<div class="product-block featured">
+    <h3>{{ heading_title }}</h3>
+    <div class="row product-layout list-unstyled">
+        {% for blog in blogs %}
+        <article class="product-item col-lg-3 col-md-3 col-sm-6 col-xs-6 product-layout">
+            <a href="{{ blog.href }}" title="{{ blog.name }}" class="product-thumb transition">
+                <div class="image"><img src="{{ blog.thumb }}" alt="{{ blog.name }}" title="{{ blog.name }}" class="img-responsive" /></div>
+                <div class="caption">
+                    <h4>{{ blog.name }}</h4>
+                    <p class="description">{{ blog.brief }}</p>
+                </div>
+            </a>
+        </article>
+        {% endfor %}
+
+    </div>
+</div>

@@ -1,0 +1,193 @@
+@import "compass";
+
+$sidr_bg:               #333333;  
+$sidr_color:            #ffffff; 
+$sidr_border:           #1a1a1a; 
+
+
+.sidr {
+    display:none;
+    position:absolute;
+    top:0;
+    height:100%;
+    z-index:999999;
+    width:260px;
+    overflow-x:none;
+    overflow-y:auto;
+    font-size:15px;
+    background: $sidr_bg;
+    color: $sidr_color;
+    @include box-shadow ( inset 0 0 5px 5px darken($sidr_bg, 5%));
+
+    h1, h2, h3, h4, h5, h6 {
+        font-size:11px;
+        font-weight:normal;
+        padding:0 15px;
+        margin:0 0 5px;
+        color:#ffffff;
+        line-height:24px;
+        @include box-shadow ( 0 5px 5px 3px rgba(0,0,0,0.2));
+    }
+    .container { padding: 0;}
+    .input-group-btn {
+        vertical-align: top;
+    }
+
+    input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea, select {
+        width:100%;
+        font-size:13px;
+        @include border-radius(0);
+        border:none;
+        display:block;
+        clear:both;
+        height: 48px
+    }
+    input[type=button], input[type=submit] {
+        color:  $sidr_color;
+        background:#ffffff;
+    }
+    input[type=button] :hover, input[type=submit] :hover {
+        background:rgba(255,255,255,0.9);
+    }
+
+    #search .btn-lg {
+        @include border-radius(0);
+    }
+
+    .sidr-inner {
+        padding:0 0 15px;
+        border-top: 1px solid $sidr_border;
+        @include box-shadow(0 1px 0 rgba(255, 255, 255, 0.1) inset);
+        > p {
+            margin-left:15px;
+            margin-right:15px;
+        }
+        a, button { 
+            border-bottom: 1px solid $sidr_border;
+            @include box-shadow(0 1px 0 rgba(255, 255, 255, 0.1));
+            &:hover { 
+                color: rgba(255,255,255,0.8);
+                @include box-shadow (inset 0 0 15px 3px darken($sidr_bg, 5%));
+            }
+        }
+
+        #search {margin-bottom: 0;}
+        .input-group-btn:last-child > .btn, .input-group-btn:last-child > .btn-group  { 
+            @include border-radius(0);
+            border-bottom: none;
+            width: 50px;
+            height: 48px;
+            border-color: #2f2f2f;
+            background-color: #2f2f2f;
+        }
+    }
+    p {
+        font-size:13px;
+        margin:0 0 12px;
+    }
+    > p {
+        margin-left:15px;
+        margin-right:15px;
+    }
+    .btn.dropdown-toggle, .btn-link {
+        width: 100%;
+        text-align: left;
+        padding: 0;
+        padding: 0 0 0 15px;
+        line-height: 48px;
+        color: $sidr_color;
+        font-size: 15px;
+        text-decoration: none;
+        display: block;
+    }
+    .dropdown { 
+        margin:0;
+        padding:0;
+        .btn-group {
+            width: 100%;
+        }
+        .dropdown-menu {
+            position: inherit;
+            background-color:$sidr_bg;
+            width: 100%;
+            margin:0;
+            @include border-radius (0);
+            li {
+                font-size:13px;
+                .btn-block {
+                    color:rgba(255,255,255,0.8);
+                    padding:0 0 0 30px;
+                    text-align: left;
+                    line-height: 40px;
+                }
+                &:hover > .btn-block {
+                    @include box-shadow (inset 0 0 15px 3px darken($sidr_bg, 5%));
+                    background-image: none;
+                    background-color: transparent;
+                }
+            }
+
+        }
+
+    }
+
+    ul{
+        margin:0;
+        padding:0;
+
+        li:hover > a, li:hover > span, li.active > a, li.active > span, li.sidr-class-active > a, li.sidr-class-active > span {
+            @include box-shadow (inset 0 0 15px 3px darken($sidr_bg, 5%));
+        }
+        li {
+            display:block;
+            margin:0;
+            line-height:48px;
+            overflow: visible;
+
+            a {
+                padding:0 15px;
+                display:block;
+                text-decoration:none;
+                color: $sidr_color;
+            }
+            ul {
+                border-bottom:none;
+                margin:0;
+                li:hover, li.active, li.sidr-class-active {
+                    border-top:none;
+                }
+                li:hover > a, li:hover > span, li.active > a, li.active > span, li.sidr-class-active > a, li.sidr-class-active > span {
+                    @include box-shadow (inset 0 0 15px 3px darken($sidr_bg, 5%));
+                }
+                li {
+                    line-height:40px;
+                    font-size:13px;
+                    a, span {
+                        color:rgba(255,255,255,0.8);
+                        padding-left:30px;
+                    }
+                }
+                li:last-child {
+                    border-bottom:none;
+                }
+            }
+        }
+    }
+
+    label {
+        font-size:13px;
+    }
+    input[type=checkbox] {
+        width:auto;
+        display:inline;
+        clear:none;
+    }
+}
+.sidr.right {
+    left:auto;
+    right:-260px;
+}
+.sidr.left {
+    left:-260px;
+    right:auto;
+}

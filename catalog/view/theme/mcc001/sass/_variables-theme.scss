@@ -1,0 +1,205 @@
+@import "compass";
+@import "bootstrap/_variables";
+
+
+///// general configuration /////
+
+$color-theme:                               #f88c20;
+$color-secondary:                           #575a59;
+
+
+$color-font:                                #666;
+$a-font-body:                               #333;
+$a-hover-font-body:                         $color-theme;
+
+$border-color:                              #ddd;
+$bg-table-head:                             #f0f0f0; // #color or none
+
+$font-icon:                         		"FontAwesome";
+$font-custom:                               'Roboto', sans-serif;
+
+$body-bg:                                   #fff; // none,  #color or url("../image/your_bg.jpg") no-repeat center fixed; or none 
+$body-bg-cover:                             none; // if background-image --> true or none
+
+$full-boxed :                               none; // boxed== true or full == none
+$bg-page:                                   none; // #color or none
+$bg-page-shadow:                            none ; // none or exemple : 0 1px 2px rgba(0, 0, 0, 0.15) 
+
+
+$body-bg-mobile:                            none; // #color or url("../image/your_bg.jpg") no-repeat center fixed; or none  
+
+// column center //
+$bg-content:                                none; // #color or none     
+
+//bg-content != none //
+$bg-content-radius:                         $border-radius-base ;// px, $border-radius-base or none 
+$bg-content-shadow:                         0 1px 2px rgba(0, 0, 0, 0.15) ; // none or exemple : 0 1px 2px rgba(0, 0, 0, 0.15)  
+
+//----- btn -----//
+
+// button //
+$btn_default :                              $color-theme;              
+$btn_default_hover :                        $color-secondary;
+$btn_default_color:                         #fff;
+$btn_default-style:                         btn-style-1 ; //none, btn-style-1, btn-style-2, btn-style-3
+
+$btn_primary :                              $color-secondary;              
+$btn_primary_hover :                        $color-theme;
+$btn_primary_color:                         #fff;
+$btn_primary-style:                         btn-style-1; //none, btn-style-1, btn-style-2, btn-style-3
+
+$btn_search :                              $color-theme;              
+$btn_search_hover :                        $color-secondary;
+$btn_search_color:                         #fff;
+
+$btn_rapidtop :                            $color-theme;              
+$btn_rapidtop_hover :                      lighten($color-secondary,5%);
+$btn_rapidtop_color:                       #fff;
+
+// option gradient //
+$type-gradient:                             linear-gradient(rgba(255, 255, 255, 0.4) , rgba(255, 255, 255, 0) );
+
+$menu-gradient:                             none; // true or none
+$button-gradient:                           none; // true or none
+$title-block-gradient:                      none; // true or none
+
+// option text shadow //
+$type-text-shadow:                          -1px -1px rgba(0, 0, 0, 0.2);
+
+$menu-text-shadow:                          none; // true or none
+$button-text-shadow:                        none; // true or none
+$title-block-text-shadow:                   none; // true or none
+
+
+//well//
+$bg-well :                                  $bg-table-head;
+$border-width-well :                        0px ; // 1px 0 1px 0 
+$box-shadow-well :                          none ; // true or none
+
+//panel//
+$panel-heading-bg:                          $bg-table-head;
+$panel-heading-color:                       $color-font;
+$panel-border-bottom-color:                 2px solid $color-theme;  //  px solid #color  or none   
+    
+///// ---Header configuration--- /////
+
+//top//
+
+$bg-top:                                    #f0f0f0;
+$border-top-width:                          2px 0 0 0; // 1px or none 
+$border-top-color:                          $color-theme; 
+$color-top:                                 #888;
+$color-hover-top:                           #333;
+$text-shadow-top:                           none; // 0 1px 0 #color or none
+
+$boxed-top:                                 none ; // true or none
+
+//reglage top margins (logos, search, cart)//
+$logo-margin :                              0px;
+$top-block-margin :                         30px;
+
+//content header//
+
+$bg-header:                                 none; //  #color  
+$color-header:                              $color-font; //  #color 
+$hover-color-header:                        #333; //  #color
+
+// Cart and Info blocks //
+
+$icon-position:                             left ; // left or right
+$icon-decoration:                           square ; // none, square or circle
+$icon-bg:                                   $color-theme; 
+$icon-color:                                #fff; //#color or none 
+$show-icon-info:                            true; // true or none
+
+$shopping-cart-bg:                          none ; // #color or none
+$shopping-cart-shadow:                      (0 -3px 0 rgba(0, 0, 0, 0.15) inset) ; // none or exemple : (0 -3px 0 rgba(0, 0, 0, 0.15) inset);    
+
+//mobile version
+$bg-header-mobile:                          $color-theme; // #color 
+$color-header-mobile:                       #fff; // #color 
+$hover-color-header-mobile:                 $color-secondary; // #color 
+
+
+
+//Menu//
+
+$bg-menu :                                  none; // #color                      
+$color-link-menu:                           none; // #color   
+$bg-hover-menu:                             none; // #color   
+$color-link-hover-menu:                     $color-theme ; // #color 
+$color-link-hover-menu-xl:                  $color-link-hover-menu; // #color 
+    
+$font-weight-menu :                         bold; // Bold / Normal 
+$text-transform-menu :                      uppercase ; 
+
+
+// option menu//
+$menu-full-width:                           none ; // true or none  
+$menu-radius:                               none ;// px, $border-radius-base or none   
+$menu-shadow:                               none ; // none or exemple : 0 1px 2px rgba(0, 0, 0, 0.15) 
+$menu-border-width:                         0 0 2px 0; // px or none
+$menu-border-style:                         solid; // solid, dotted, dashed   
+$menu-border-color:                         $color-theme; 
+$border-li-right-menu :                     none; // #color or none
+$menu-border-top-ulhover:                   2px solid $color-secondary; // 2px solid #color or none 
+
+
+/////-------------------------/////
+
+//product-thumb//
+
+$content-bg-tittle :                        $color-theme; // #color or none  
+$content-color-tittle :                     #fff;
+$content-title-decoration:                  deco-5; //deco-1, deco-2, ...-7
+$color-list-price :                         $color-theme;
+$color-list-title :                         #444;
+$border-list-style :                        none ; // full or boxed or none
+
+
+$product-thumb-bg-hover:                    $bg-well;
+$product-thumb-border-hover:                $color-theme; // only for $border-list-style == none || Boxed 
+
+//--product-thumb left or right --//
+$block-bg :                                 none ; // #color or none   
+//or
+$block-content-bg :                         none ; // #color or none   
+
+$block-radius :                             none ;// px, $border-radius-base or none   
+$block-shadow:                              none ; // none or exemple : 0 1px 2px rgba(0, 0, 0, 0.15)  
+$block-border:                              $border-color; // #color or none
+
+$block-bg-tittle :                          #f0f0f0 ; // #color or none  
+$block-color-tittle :                       #888;
+$block-top-radius :                         none ; // px, $border-radius-base or none  
+$block-title-decoration:                    deco-4 ; // none, deco-1, deco-2, deco-3 and deco-4  
+
+//pagination
+$pagination-color :                         #fff;
+$pagination-bg-selected :                   $color-theme;
+$pagination-selected-color :                $pagination-color;
+
+//html block
+$i-bg-color:                                $bg-well; // color
+$i-color:                                   #888; // color
+
+//Footer
+   
+$bg-content-footer:                         $bg-well;
+$title-color-content-footer:                #555;
+$color-content-footer:                      #888;
+$link-content-footer:                       #555;
+$link-hover-content-footer:                 $color-theme;
+
+$boxed-footer:                              none ; // true or none  
+$border-color-footer:                       $color-theme ; // 1px solid #color or none 
+$border-width-footer:                       2px 0 0 0; 
+$footer-radius:                             none ; // true or none  
+$footer-shadow:                             none ; // true or none  
+$footer-gradient:                           none ; // true or none 
+
+$bg-content-powered:                        $color-secondary ;
+$border-content-powered:                    none; // 1px solid #color or none 
+$color-content-powered:                     #fff;
+$link-content-powered:                      $color-theme;
+$link-hover-content-powered:                darken ($color-theme, 10%) ;

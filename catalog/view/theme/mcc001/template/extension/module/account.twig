@@ -1,0 +1,24 @@
+<div class="list-group">
+    {% if not logged %}
+    <a href="{{ login }}" class="list-group-item my-account"><i class="fa fa-user"></i>{{ text_login }}</a> 
+    <a href="{{ register }}" class="list-group-item new-register"><i class="fa fa-pencil"></i>{{ text_register }}</a> 
+    <a href="{{ forgotten }}" class="list-group-item forgotten-page"><i class="fa fa-exclamation"></i>{{ text_forgotten }}</a>
+    {% endif %}
+    <a href="{{ account }}" class="list-group-item view-account"><i class="fa fa-cogs"></i>{{ text_account }}</a>
+    {% if logged %}
+    <a href="{{ edit }}" class="list-group-item edit-account"><i class="fa fa-pencil-square-o"></i>{{ text_edit }}</a> 
+    <a href="{{ password }}" class="list-group-item password-list"><i class="fa fa-lock"></i>{{ text_password }}</a>
+    {% endif %}
+    <a href="{{ address }}" class="list-group-item address-list"><i class="fa fa-building-o"></i>{{ text_address }}</a>
+    <a href="{{ wishlist }}" class="list-group-item wishlist-list"><i class="fa fa-heart-o"></i>{{ text_wishlist }}</a>
+    <a href="{{ order }}" class="list-group-item order-history"><i class="fa fa-history"></i>{{ text_order }}</a>
+    <a href="{{ download }}" class="list-group-item download-list"><i class="fa fa-download"></i>{{ text_download }}</a>
+    <a href="{{ reward }}" class="list-group-item reward-list"><i class="fa fa-trophy"></i>{{ text_reward }}</a>
+    <a href="{{ return }}" class="list-group-item return-list"><i class="fa fa-reply"></i>{{ text_return }}</a>
+    <a href="{{ transaction }}" class="list-group-item transaction-list"><i class="fa fa-shopping-cart"></i>{{ text_transaction }}</a>
+    <a href="{{ newsletter }}" class="list-group-item newsletter-list"><i class="fa fa-envelope-o"></i>{{ text_newsletter }}</a>
+    <a href="{{ recurring }}" class="list-group-item recurring-list"><i class="fa fa-credit-card"></i> {{ text_recurring }}</a>
+    {% if logged %}
+    <a href="{{ logout }}" class="list-group-item"><i class="fa fa-power-off"></i>{{ text_logout }}</a>
+    {% endif %}
+</div>
