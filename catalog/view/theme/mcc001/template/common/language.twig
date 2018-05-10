@@ -12,7 +12,7 @@
                     <span>{{ text_language }}</span> <i class="fa fa-angle-down"></i></button>
                 <ul class="dropdown-menu">
                     {% for language in languages %}
-					<li><a href="{{ language.code }}" class="btn-block"><img src="catalog/language/{{ language.code }}/{{ language.code }}.png" alt="{{ language.name }}" title="{{ language.name }}" /> {{ language.name }}</a></li>
+                    <li><a href="{{ language.code }}" class="btn-block"><img src="catalog/language/{{ language.code }}/{{ language.code }}.png" alt="{{ language.name }}" title="{{ language.name }}" /> {{ language.name }}</a></li>
                     {% endfor %}
                 </ul>
             </div>

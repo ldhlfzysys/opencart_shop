@@ -145,9 +145,9 @@
                   {% if histories %}
                   {% for history in histories %}
                   <tr>
-                    <td class="text-left" style="width: 30%">{{ history.date_added }}</td>
-                    <td class="text-left" style="width: 30%">{{ history.status }}</td>
-                    <td class="text-left" style="width: 30%; word-break:break-all;">{{ history.comment }}</td>
+                    <td class="text-left">{{ history.date_added }}</td>
+                    <td class="text-left">{{ history.status }}</td>
+                    <td class="text-left">{{ history.comment }}</td>
                   </tr>
                   {% endfor %}
                   {% else %}

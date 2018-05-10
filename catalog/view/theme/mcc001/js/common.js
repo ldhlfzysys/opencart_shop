@@ -107,7 +107,6 @@ $(document).ready(function() {
     $(document).ajaxStop(function() {
         $('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
     });
-	
 
 
 

@@ -7,7 +7,7 @@
 				{% if category.children %}
 				<li><a href="{{ category.href }}" >{{ category.name }}</a>
 					<ul class="list-unstyled ul-col-{{ category.column }}">
-						{% for children in rray_chunk %}
+						{% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
 						{% if category.column  ==  1 %}
 						{% for child in children %}
 						<li><a href="{{ child.href }}">{{ child.name }}</a></li>
@@ -29,9 +29,6 @@
 				<li><a href="{{ category.href }}">{{ category.name }}</a></li>
 				{% endif %}
 				{% endfor %}
-				<li><a href="{{ blog }}">{{ text_blog }}</a></li>
-       			<li><a href="{{ press }}">{{ text_press }}</a></li>
-        		<li><a href="{{ faq }}">{{ text_faq }}</a></li>
 
 
 			</ul>

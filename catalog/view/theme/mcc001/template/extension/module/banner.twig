@@ -4,11 +4,13 @@
         {% if banner.link %}
         <div class="col-sm-4 ">
             <a href="{{ banner.link }}" class="img-banner"><img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" />
+                <div class="baner_title">{{ banner.title }}</div>
             </a>
         </div>
         {% else %}
         <div class="col-sm-4 ">
             <img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-banner img-responsive" />
+            <div class="title-banner">{{ banner.title }}</div>
         </div>
         {% endif %}
         {% endfor %}

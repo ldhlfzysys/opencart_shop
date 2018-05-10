@@ -40,7 +40,7 @@
         {% endfor %}
     </head>
     <body class="{{ class }}">
-        <div class="full-boxed {% if is_mobile %} wrapper {% endif %}">
+        <div class="full-boxed">
             <header id="header">
                 <nav id="top" class="hidden-xs hidden-sm">
                     <div class="boxed bg-top">
@@ -58,12 +58,11 @@
                         </div>
                     </div>
                 </nav>
-                
                 <div class="header-content">
                     <div class="boxed bg-header-content">
                         <div class="container">
                             <div class="row">
-                                <div id="mobile-header" class="col-sm-2 col-xs-2 hidden-md hidden-lg hidden-xs hidden-md hidden-sm">
+                                <div id="mobile-header" class="col-sm-2 col-xs-2 hidden-md hidden-lg">
                                     <a id="responsive-menu-button"  href="javascript:void(0)" class="pull-left"><i class="fa fa-bars"></i></a>
                                 </div>
                                 <div class="col-xs-8 col-sm-8 col-md-4">
@@ -114,7 +113,6 @@
                         </div>
                     </div>
                 </div>
-                
                 {{ menu }}
 
             </header>

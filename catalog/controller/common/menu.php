@@ -41,6 +41,8 @@ class ControllerCommonMenu extends Controller {
 			}
 		}
 		
+		
+		
 		$data['blog'] = $this->url->link('blog/all');
 		$data['press'] = $this->url->link('press/all');
 		$data['faq'] = $this->url->link('faq/faq');

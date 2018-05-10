@@ -1,7 +1,7 @@
 {% if currencies|length > 1 %}
 <li id="currency-block">
     <div  class="dropdown">
-        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="currency">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-currency">
           <div class="btn-group">
             <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">{% for currency in currencies %}
             {% if currency.symbol_left and currency.code == code %} <strong>{{ currency.symbol_left }}</strong> {% elseif currency.symbol_right and currency.code == code %} <strong>{{ currency.symbol_right }}</strong> {% endif %}
