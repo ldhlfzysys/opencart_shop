@@ -1,11 +1,11 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://hifruit.top/admin/');
-define('HTTP_CATALOG', 'http://hifruit.top/');
+define('HTTP_SERVER', 'http://hifresh.ca/admin/');
+define('HTTP_CATALOG', 'http://hifresh.ca/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://hifruit.top/admin/');
-define('HTTPS_CATALOG', 'http://hifruit.top/');
+define('HTTPS_SERVER', 'http://hifresh.ca/admin/');
+define('HTTPS_CATALOG', 'http://hifresh.ca/');
 
 // DIR
 define('DIR_APPLICATION', '/var/www/html/admin/');
