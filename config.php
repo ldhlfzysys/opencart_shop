@@ -1,9 +1,9 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://hifresh.ca/');
+define('HTTP_SERVER', 'http://hifresh.v50.cn/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://hifresh.ca/');
+define('HTTPS_SERVER', 'http://hifresh.v50.cn/');
 
 // DIR
 define('DIR_APPLICATION', '/var/www/html/catalog/');
