@@ -37,8 +37,8 @@ class WxPayConfig
 	//const SSLCERT_PATH = '/var/www/html/system/helper/wxpay_api/apiclient_cert.pem'; 
 	//const SSLKEY_PATH = '/var/www/html/system/helper/wxpay_api/apiclient_key.pem';
 	
-	const SSLCERT_PATH = WXPAY_SSLCERT_PATH; 
-	const SSLKEY_PATH = WXPAY_SSLKEY_PATH;
+	const SSLCERT_PATH = '/var/www/html/system/helper/wxpay_api/apiclient_cert.pem'; 
+	const SSLKEY_PATH = '/var/www/html/system/helper/wxpay_api/apiclient_key.pem';
 	
 	//=======【curl代理设置】===================================
 	/**
