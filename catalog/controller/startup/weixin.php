@@ -137,7 +137,8 @@ class ControllerStartupWeiXin extends Controller {
 						
 					} else {
 						$appid = $this->config->get('payment_wxpay_appid');
-					   header('Location: https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$appid.'&redirect_uri='.$wechat_url.'&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+					   #header('Location: https://open.weixin.qq.com/connect/oauth2/authorize?appid='.$appid.'&redirect_uri='.$wechat_url.'&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
+					   header('Location: http://hifresh.v50.cn/get-weixin-code.html?appid='.$appid.'&redirect_uri='.$wechat_url.'&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect');
 						
 					}
 				  
