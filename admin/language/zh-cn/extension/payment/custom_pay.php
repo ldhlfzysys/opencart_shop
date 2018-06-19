@@ -6,7 +6,7 @@ $_['heading_title']                  = '第三方微信支付';
 $_['text_extension']                 = 'Extensions';
 $_['text_success']                   = 'Success: You have modified Alipay account details!';
 $_['text_edit']                      = 'Edit Alipay Pay';
-$_['text_alipay_cross']              = '<a target="_BLANK" href="https://global.alipay.com"><img src="view/image/payment/alipay-cross-border.png" alt="Alipay Pay Website" title="Alipay Pay Website" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_custom_pay']              = '<a target="_BLANK" href="https://global.alipay.com"><img src="view/image/payment/alipay-cross-border.png" alt="Alipay Pay Website" title="Alipay Pay Website" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_live']                      = 'Live';
 $_['text_sandbox']                   = 'Sandbox';
 

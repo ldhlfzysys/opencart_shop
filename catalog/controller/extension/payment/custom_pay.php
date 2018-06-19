@@ -12,15 +12,15 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 
 		$out_trade_no = str_pad($order_info['order_id'], 7, "0",STR_PAD_LEFT); // Length must be greater than 7
 		$subject = trim($this->config->get('config_name'));
-		$currency = $this->config->get('payment_alipay_cross_currency');
+		$currency = $this->config->get('payment_custom_pay_currency');
 		$total_fee = trim($this->currency->format($order_info['total'], $currency, '', false));
 		$total_fee_cny = trim($this->currency->format($order_info['total'], 'CNY', '', false));
 		$body = trim($this->config->get('config_name'));
 
 		$alipay_config = array (
-			'partner'              => $this->config->get('payment_alipay_cross_app_id'),
-			'key'                  => $this->config->get('payment_alipay_cross_merchant_private_key'),
-			'notify_url'           => HTTPS_SERVER . "payment_callback/alipay_cross",
+			'partner'              => $this->config->get('payment_custom_pay_app_id'),
+			'key'                  => $this->config->get('payment_custom_pay_merchant_private_key'),
+			'notify_url'           => HTTPS_SERVER . "payment_callback/custom_pay",
 			'return_url'           => $this->url->link('checkout/success'),
 			'sign_type'            => strtoupper('MD5'),
 			'input_charset'        => strtolower('utf-8'),
@@ -47,33 +47,33 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 			$parameter['total_fee'] = $total_fee;
 		}
 
-		$this->load->model('extension/payment/alipay_cross');
-		$data['params'] = $this->model_extension_payment_alipay_cross->buildRequestPara($alipay_config, $parameter);
-		$gateway = $this->config->get('payment_alipay_cross_test') == "sandbox" ? $this->alipay_gateway_test : $this->alipay_gateway;
+		$this->load->model('extension/payment/custom_pay');
+		$data['params'] = $this->model_extension_payment_custom_pay->buildRequestPara($alipay_config, $parameter);
+		$gateway = $this->config->get('payment_custom_pay_test') == "sandbox" ? $this->alipay_gateway_test : $this->alipay_gateway;
 		$data['action'] = $gateway . "_input_charset=".trim($alipay_config['input_charset']);
 
-		return $this->load->view('extension/payment/alipay_cross', $data);
+		return $this->load->view('extension/payment/custom_pay', $data);
 	}
 
 	public function callback() {
 		$this->log->write('alipay cross payment notify:');
 		$alipay_config = array (
-			'partner'              => $this->config->get('payment_alipay_cross_app_id'),
-			'key'                  => $this->config->get('payment_alipay_cross_merchant_private_key'),
+			'partner'              => $this->config->get('payment_custom_pay_app_id'),
+			'key'                  => $this->config->get('payment_custom_pay_merchant_private_key'),
 			'sign_type'            => strtoupper('MD5'),
 			'input_charset'        => strtolower('utf-8'),
 			'cacert'               => getcwd().'/cacert.pem'
 		);
-		$this->load->model('extension/payment/alipay_cross');
+		$this->load->model('extension/payment/custom_pay');
 		$this->log->write('config: ' . var_export($alipay_config,true));
-		$verify_result = $this->model_extension_payment_alipay_cross->verifyNotify($alipay_config);
+		$verify_result = $this->model_extension_payment_custom_pay->verifyNotify($alipay_config);
 
 		if($verify_result) {//check successed
 			$this->log->write('Alipay cross check successed');
 			$order_id = $_POST['out_trade_no'];
 			if($_POST['trade_status'] == 'TRADE_FINISHED') {
 				$this->load->model('checkout/order');
-				$this->model_checkout_order->addOrderHistory($order_id, $this->config->get('payment_alipay_cross_order_status_id'));
+				$this->model_checkout_order->addOrderHistory($order_id, $this->config->get('payment_custom_pay_order_status_id'));
 			} else if ($_POST['trade_status'] == 'TRADE_SUCCESS') {
 			}
 			echo "success"; //Do not modified or deleted
