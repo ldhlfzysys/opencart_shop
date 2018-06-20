@@ -4,8 +4,6 @@ class ModelExtensionPaymentCustomPay extends Model {
 	var $https_verify_url_test = 'https://openapi.alipaydev.com/gateway.do?service=notify_verify&';
 	var $alipay_config;
 
-	var $pay_url = 'http://qrpay.ottpay.com/h5Pay?merCode=66e201e8d8f9415be8eb9c1e6e0b308e&orderId=99776665345670&amount=100&newURL=http%3A%2F%2Fwww.ottpay.com%2Fpay'
-
 	public function getMethod($address, $total) {
 		$this->load->language('extension/payment/custom_pay');
 
@@ -35,20 +33,6 @@ class ModelExtensionPaymentCustomPay extends Model {
 		return $method_data;
 	}
 
-	function buildRequestMysign($para_sort) {
-		$prestr = $this->createLinkstring($para_sort);
-
-		$mysign = "";
-		switch (strtoupper(trim($this->alipay_config['sign_type']))) {
-			case "MD5" :
-				$mysign = $this->md5Sign($prestr, $this->alipay_config['key']);
-				break;
-			default :
-				$mysign = "";
-		}
-
-		return $mysign;
-	}
 
 
 	function buildRequestPara($alipay_config, $para_temp) {
@@ -57,11 +41,6 @@ class ModelExtensionPaymentCustomPay extends Model {
 		$para_filter = $this->paraFilter($para_temp);
 
 		$para_sort = $this->argSort($para_filter);
-
-		$mysign = $this->buildRequestMysign($para_sort);
-
-		$para_sort['sign'] = $mysign;
-		$para_sort['sign_type'] = strtoupper(trim($this->alipay_config['sign_type']));
 
 		return $para_sort;
 	}
@@ -90,24 +69,6 @@ class ModelExtensionPaymentCustomPay extends Model {
 		}
 	}
 
-	function getSignVeryfy($para_temp, $sign) {
-		$para_filter = $this->paraFilter($para_temp);
-
-		$para_sort = $this->argSort($para_filter);
-
-		$prestr = $this->createLinkstring($para_sort);
-
-		switch (strtoupper(trim($this->alipay_config['sign_type']))) {
-			case "MD5" :
-				$isSgin = $this->md5Verify($prestr, $sign, $this->alipay_config['key']);
-				break;
-			default :
-				$isSgin = false;
-		}
-
-		return $isSgin;
-	}
-
 	function getResponse($notify_id) {
 		$partner = trim($this->alipay_config['partner']);
 		$veryfy_url = $this->config->get('payment_custom_pay_test') == "sandbox" ? $this->https_verify_url_test : $this->https_verify_url;
@@ -117,63 +78,5 @@ class ModelExtensionPaymentCustomPay extends Model {
 		return $responseTxt;
 	}
 
-	function createLinkstring($para) {
-		$arg  = "";
-		while (list ($key, $val) = each ($para)) {
-			$arg .= $key . "=" . $val . "&";
-		}
-		//remove the last char '&'
-		$arg = substr($arg, 0, count($arg)-2);
-
-		return $arg;
-	}
-
-	function paraFilter($para) {
-		$para_filter = array();
-		while (list ($key, $val) = each ($para)) {
-			if($key == "sign" || $key == "sign_type" || $val == "")continue;
-			else	$para_filter[$key] = $para[$key];
-		}
-		return $para_filter;
-	}
-
-	function argSort($para) {
-		ksort($para);
-		reset($para);
-		return $para;
-	}
-
-	function getHttpResponseGET($url,$cacert_url) {
-		$curl = curl_init($url);
-		curl_setopt($curl, CURLOPT_HEADER, 0 );
-		curl_setopt($curl,CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
-		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 2);
-		curl_setopt($curl, CURLOPT_CAINFO,$cacert_url);
-		$responseText = curl_exec($curl);
-		if (!$responseText) {
-			$this->log->write('ALIPAY NOTIFY CURL_ERROR: ' . var_export(curl_error($curl), true));
-		}
-		curl_close($curl);
-
-		return $responseText;
-	}
-
-	function md5Sign($prestr, $key) {
-		$prestr = $prestr . $key;
-		return md5($prestr);
-	}
-
-	function md5Verify($prestr, $sign, $key)
-	{
-		$prestr = $prestr . $key;
-		$mysgin = md5($prestr);
-
-		if ($mysgin == $sign) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 }
 
