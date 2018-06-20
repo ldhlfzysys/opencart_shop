@@ -54,7 +54,7 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 		$parameter_custom = array(
 			"merCode"        => $alipay_config['partner'],
 			"orderId"        => $out_trade_no,
-			"amount"        => $$parameter['total_fee'],
+			"amount"        => $parameter['total_fee'],
 			"newURL"        => $alipay_config['notify_url'],
 		);
 
