@@ -20,6 +20,7 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 		#货币
 		$currency = $this->config->get('payment_custom_pay_currency');
 		$total_fee = trim($this->currency->format($order_info['total'], $currency, '', false));
+		$total_fee = $total_fee*100;
 		#人民币总价
 		$total_fee_cny = trim($this->currency->format($order_info['total'], 'CNY', '', false));
 		$body = trim($this->config->get('config_name'));
@@ -55,7 +56,7 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 			"merCode"        => $alipay_config['partner'],
 			"orderId"        => $out_trade_no,
 			"amount"        => $parameter['total_fee'],
-			"newURL"        => $alipay_config['notify_url'],
+			"newURL"        => urlencode($alipay_config['notify_url']),
 		);
 
 		$this->load->model('extension/payment/custom_pay');
