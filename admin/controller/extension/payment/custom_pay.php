@@ -132,11 +132,11 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 			$data['payment_custom_pay_status'] = $this->config->get('payment_custom_pay_status');
 		}
 
-		// if (isset($this->request->post['payment_custom_pay_sort_order'])) {
-		// 	$data['payment_custom_pay_sort_order'] = $this->request->post['payment_custom_pay_sort_order'];
-		// } else {
-		// 	$data['payment_custom_pay_sort_order'] = $this->config->get('payment_custom_pay_sort_order');
-		// }
+		if (isset($this->request->post['payment_custom_pay_sort_order'])) {
+			$data['payment_custom_pay_sort_order'] = $this->request->post['payment_custom_pay_sort_order'];
+		} else {
+			$data['payment_custom_pay_sort_order'] = $this->config->get('payment_custom_pay_sort_order');
+		}
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
