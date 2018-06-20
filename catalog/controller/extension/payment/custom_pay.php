@@ -53,7 +53,7 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 
 		$this->load->model('extension/payment/custom_pay');
 		// $data['params'] = $this->model_extension_payment_custom_pay->buildRequestPara($alipay_config, $parameter);
-		$pay_url = $pay_base_url."merCode=".$alipay_config['partner']."&orderId=".$out_trade_no."&amount=".$parameter['rmb_fee']."&newURL=".$alipay_config['notify_url'];
+		$pay_url = $this->pay_base_url."merCode=".$alipay_config['partner']."&orderId=".$out_trade_no."&amount=".$parameter['total_fee']."&newURL=".$alipay_config['notify_url'];
 		$data['action'] = $pay_url;
 
 		return $this->load->view('extension/payment/custom_pay', $data);
