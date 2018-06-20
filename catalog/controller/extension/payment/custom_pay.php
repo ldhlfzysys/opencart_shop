@@ -2,6 +2,7 @@
 class ControllerExtensionPaymentCustomPay extends Controller {
 	var $alipay_gateway = 'https://mapi.alipay.com/gateway.do?';
 	var $alipay_gateway_test = 'https://openapi.alipaydev.com/gateway.do?';
+	var $pay_url = 'http://qrpay.ottpay.com/h5Pay?merCode=66e201e8d8f9415be8eb9c1e6e0b308e&orderId=99776665345670&amount=100&newURL=http%3A%2F%2Fwww.ottpay.com%2Fpay'
 
 	public function index() {
 		$data['button_confirm'] = $this->language->get('button_confirm');
@@ -19,12 +20,9 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 
 		$alipay_config = array (
 			'partner'              => $this->config->get('payment_custom_pay_app_id'),
-			'key'                  => $this->config->get('payment_custom_pay_merchant_private_key'),
 			'notify_url'           => HTTPS_SERVER . "payment_callback/custom_pay",
 			'return_url'           => $this->url->link('checkout/success'),
-			'sign_type'            => strtoupper('MD5'),
 			'input_charset'        => strtolower('utf-8'),
-			'cacert'               => getcwd().'/cacert.pem',
 			'transport'            => 'https',
 			'service'              => 'create_forex_trade'
 		);

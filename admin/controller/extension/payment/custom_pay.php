@@ -1,7 +1,7 @@
 <?php
 class ControllerExtensionPaymentCustomPay extends Controller {
 	private $error = array();
-	private $currencies = array('GBP', 'HKD', 'USD', 'CHF', 'SGD', 'SEK', 'DKK', 'NOK', 'JPY', 'CAD', 'AUD', 'EUR', 'NZD', 'KRW', 'THB');
+	private $currencies = array('CNY','CAD');
 
 	public function index() {
 		$this->load->language('extension/payment/custom_pay');
@@ -120,11 +120,11 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 
 		$data['geo_zones'] = $this->model_localisation_geo_zone->getGeoZones();
 
-		if (isset($this->request->post['payment_custom_pay_test'])) {
-			$data['payment_custom_pay_test'] = $this->request->post['payment_custom_pay_test'];
-		} else {
-			$data['payment_custom_pay_test'] = $this->config->get('payment_custom_pay_test');
-		}
+		// if (isset($this->request->post['payment_custom_pay_test'])) {
+		// 	$data['payment_custom_pay_test'] = $this->request->post['payment_custom_pay_test'];
+		// } else {
+		// 	$data['payment_custom_pay_test'] = $this->config->get('payment_custom_pay_test');
+		// }
 
 		if (isset($this->request->post['payment_custom_pay_status'])) {
 			$data['payment_custom_pay_status'] = $this->request->post['payment_custom_pay_status'];
@@ -132,11 +132,11 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 			$data['payment_custom_pay_status'] = $this->config->get('payment_custom_pay_status');
 		}
 
-		if (isset($this->request->post['payment_custom_pay_sort_order'])) {
-			$data['payment_custom_pay_sort_order'] = $this->request->post['payment_custom_pay_sort_order'];
-		} else {
-			$data['payment_custom_pay_sort_order'] = $this->config->get('payment_custom_pay_sort_order');
-		}
+		// if (isset($this->request->post['payment_custom_pay_sort_order'])) {
+		// 	$data['payment_custom_pay_sort_order'] = $this->request->post['payment_custom_pay_sort_order'];
+		// } else {
+		// 	$data['payment_custom_pay_sort_order'] = $this->config->get('payment_custom_pay_sort_order');
+		// }
 
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
@@ -154,9 +154,9 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 			$this->error['app_id'] = $this->language->get('error_app_id');
 		}
 
-		if (!$this->request->post['payment_custom_pay_merchant_private_key']) {
-			$this->error['merchant_private_key'] = $this->language->get('error_merchant_private_key');
-		}
+		// if (!$this->request->post['payment_custom_pay_merchant_private_key']) {
+		// 	$this->error['merchant_private_key'] = $this->language->get('error_merchant_private_key');
+		// }
 
 		return !$this->error;
 	}

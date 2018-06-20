@@ -4,18 +4,18 @@ $_['heading_title']                  = '第三方微信支付';
 
 // Text
 $_['text_extension']                 = 'Extensions';
-$_['text_success']                   = 'Success: You have modified Alipay account details!';
-$_['text_edit']                      = 'Edit Alipay Pay';
-$_['text_custom_pay']              = '<a target="_BLANK" href="https://global.alipay.com"><img src="view/image/payment/alipay-cross-border.png" alt="Alipay Pay Website" title="Alipay Pay Website" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_success']                   = '修改成功';
+$_['text_edit']                      = '第三方微信支付配置';
+$_['text_custom_pay']              = '第三方微信支付';
 $_['text_live']                      = 'Live';
 $_['text_sandbox']                   = 'Sandbox';
 
 // Entry
-$_['entry_app_id']                   = 'Partner ID';
+$_['entry_app_id']                   = 'MerCode';
 $_['entry_merchant_private_key']     = 'Key';
 $_['entry_test']                     = 'Test mode';
 $_['entry_total']                    = 'Total';
-$_['entry_currency']                 = 'Currency Code';
+$_['entry_currency']                 = '货币';
 $_['entry_order_status']             = 'Completed Status';
 $_['entry_geo_zone']                 = 'Geo Zone';
 $_['entry_status']                   = 'Status';

@@ -4,6 +4,8 @@ class ModelExtensionPaymentCustomPay extends Model {
 	var $https_verify_url_test = 'https://openapi.alipaydev.com/gateway.do?service=notify_verify&';
 	var $alipay_config;
 
+	var $pay_url = 'http://qrpay.ottpay.com/h5Pay?merCode=66e201e8d8f9415be8eb9c1e6e0b308e&orderId=99776665345670&amount=100&newURL=http%3A%2F%2Fwww.ottpay.com%2Fpay'
+
 	public function getMethod($address, $total) {
 		$this->load->language('extension/payment/custom_pay');
 
@@ -26,7 +28,7 @@ class ModelExtensionPaymentCustomPay extends Model {
 				'code'       => 'custom_pay',
 				'title'      => $this->language->get('text_title'),
 				'terms'      => '',
-				'sort_order' => $this->config->get('payment_custom_pay_sort_order')
+				// 'sort_order' => $this->config->get('payment_custom_pay_sort_order')
 			);
 		}
 

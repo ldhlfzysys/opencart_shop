@@ -5,8 +5,8 @@ $_['heading_title']                  = 'custom_pay';
 // Text
 $_['text_extension']                 = 'Extensions';
 $_['text_success']                   = 'Success: You have modified Alipay account details!';
-$_['text_edit']                      = 'Edit Alipay Pay';
-$_['text_custom_pay']              = '<a target="_BLANK" href="https://global.alipay.com"><img src="view/image/payment/alipay-cross-border.png" alt="Alipay Pay Website" title="Alipay Pay Website" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_edit']                      = '第三方微信支付配置';
+$_['text_custom_pay']              = '第三方微信支付';
 $_['text_live']                      = 'Live';
 $_['text_sandbox']                   = 'Sandbox';
 
@@ -20,6 +20,7 @@ $_['entry_order_status']             = 'Completed Status';
 $_['entry_geo_zone']                 = 'Geo Zone';
 $_['entry_status']                   = 'Status';
 $_['entry_sort_order']               = 'Sort Order';
+$_['entry_mer_code']                 = 'mer code';
 
 // Help
 $_['help_total']                     = 'The checkout total the order must reach before this payment method becomes active';
