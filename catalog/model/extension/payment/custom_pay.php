@@ -26,7 +26,7 @@ class ModelExtensionPaymentCustomPay extends Model {
 				'code'       => 'custom_pay',
 				'title'      => $this->language->get('text_title'),
 				'terms'      => '',
-				// 'sort_order' => $this->config->get('payment_custom_pay_sort_order')
+				'sort_order' => $this->config->get('payment_custom_pay_sort_order')
 			);
 		}
 
