@@ -26,7 +26,7 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 
 		$alipay_config = array (
 			'partner'              => $this->config->get('payment_custom_pay_app_id'),
-			'notify_url'           => HTTPS_SERVER . "payment_callback/custom_pay",
+			'notify_url'           => HTTPS_SERVER . "index.php?route=extension/payment/custom_pay/callback",
 			'return_url'           => $this->url->link('checkout/success'),
 			'input_charset'        => strtolower('utf-8'),
 			'transport'            => 'https',
