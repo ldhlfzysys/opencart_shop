@@ -80,11 +80,9 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 			$order_id = $_GET['orderId'];
 			$this->load->model('checkout/order');
 			$this->model_checkout_order->addOrderHistory($order_id, $this->config->get('payment_custom_pay_order_status_id'));
-			$success_url = $this->url->link('checkout/success');
-			echo '<script>url="'.$success_url.'";window.location.href=url;</script>';
+			return $this->response->redirect($this->url->link('checkout/success', '', true));
 		}else{
-			$success_url = $this->url->link('checkout/fail');
-			echo '<script>url="'.$success_url.'";window.location.href=url;</script>';
+			return $this->response->redirect($this->url->link('checkout/failure', '', true));
 		}
 	}
 }
