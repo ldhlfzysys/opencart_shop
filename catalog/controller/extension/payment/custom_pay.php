@@ -83,7 +83,7 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 			$success_url = $this->url->link('checkout/success');
 			echo '<script>url="'.$success_url.'";window.location.href=url;</script>';
 		}else{
-			$success_url $this->url->link('checkout/success');
+			$success_url = $this->url->link('checkout/success');
 			echo '<script>url="'.$success_url.'";window.location.href=url;</script>';
 		}
 	}
