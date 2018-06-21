@@ -61,7 +61,7 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 
 		$this->load->model('extension/payment/custom_pay');
 		$data['params'] = $parameter_custom;
-		$pay_url = $this->pay_base_url;
+		$pay_url = $this->pay_base_url."merCode=".$alipay_config['partner']."&orderId=".$out_trade_no."&amount=".$parameter['total_fee']."&newURL=".urlencode($alipay_config['notify_url']);
 		$data['action'] = $pay_url;
 
 		return $this->load->view('extension/payment/custom_pay', $data);
@@ -80,9 +80,13 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 			$order_id = $_GET['orderId'];
 			$this->load->model('checkout/order');
 			$this->model_checkout_order->addOrderHistory($order_id, $this->config->get('payment_custom_pay_order_status_id'));
-			echo "success";
+			$json['redirect'] = $this->url->link('checkout/success');
+			$this->response->addHeader('Content-Type: application/json');
+			$this->response->setOutput(json_encode($json));	
 		}else{
-			echo "fail";
+			$json['redirect'] = $this->url->link('checkout/fail');
+			$this->response->addHeader('Content-Type: application/json');
+			$this->response->setOutput(json_encode($json));	
 		}
 	}
 }
