@@ -61,7 +61,8 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 
 		$this->load->model('extension/payment/custom_pay');
 		$data['params'] = $parameter_custom;
-		$pay_url = $this->pay_base_url."merCode=".$alipay_config['partner']."&orderId=".$out_trade_no."&amount=".$parameter['total_fee']."&newURL=".urlencode($alipay_config['notify_url']);
+		$hash_order_id = uniqid().$out_trade_no;
+		$pay_url = $this->pay_base_url."merCode=".$alipay_config['partner']."&orderId=".$hash_order_id."&amount=".$parameter['total_fee']."&newURL=".urlencode($alipay_config['notify_url']);
 		$data['action'] = $pay_url;
 
 		return $this->load->view('extension/payment/custom_pay', $data);
@@ -78,9 +79,8 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 		$status = $_GET['status'];
 		if ($status == "success") {
 			$order_id = $_GET['orderId'];
-			$hash_order_id = uniqid().$order_id;
 			$this->load->model('checkout/order');
-			$this->model_checkout_order->addOrderHistory($hash_order_id, $this->config->get('payment_custom_pay_order_status_id'));
+			$this->model_checkout_order->addOrderHistory($order_id, $this->config->get('payment_custom_pay_order_status_id'));
 			return $this->response->redirect($this->url->link('checkout/success', '', true));
 		}else{
 			return $this->response->redirect($this->url->link('checkout/failure', '', true));
