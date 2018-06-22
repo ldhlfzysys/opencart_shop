@@ -20,7 +20,7 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 		#货币
 		$currency = $this->config->get('payment_custom_pay_currency');
 		$total_fee = trim($this->currency->format($order_info['total'], $currency, '', false));
-		// $total_fee = $total_fee*100;
+		$total_fee = $total_fee*100;
 		#人民币总价
 		$total_fee_cny = trim($this->currency->format($order_info['total'], 'CNY', '', false));
 		$body = trim($this->config->get('config_name'));
