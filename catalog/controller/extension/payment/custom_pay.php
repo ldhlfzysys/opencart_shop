@@ -78,6 +78,7 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 		$status = $_GET['status'];
 		if ($status == "success") {
 			$order_id = $_GET['orderId'];
+			$hash_order_id = uniqid().$order_id;
 			$this->load->model('checkout/order');
 			$this->model_checkout_order->addOrderHistory($order_id, $this->config->get('payment_custom_pay_order_status_id'));
 			return $this->response->redirect($this->url->link('checkout/success', '', true));
