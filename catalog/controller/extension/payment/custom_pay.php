@@ -79,8 +79,10 @@ class ControllerExtensionPaymentCustomPay extends Controller {
 		$status = $_GET['status'];
 		if ($status == "success") {
 			$order_id = $_GET['orderId'];
+			$time_length = strlen(time());
+			$order_id_without_time = substr($order_id,$time_length);
 			$this->load->model('checkout/order');
-			$this->model_checkout_order->addOrderHistory($order_id, $this->config->get('payment_custom_pay_order_status_id'));
+			$this->model_checkout_order->addOrderHistory($order_id_without_time, $this->config->get('payment_custom_pay_order_status_id'));
 			return $this->response->redirect($this->url->link('checkout/success', '', true));
 		}else{
 			return $this->response->redirect($this->url->link('checkout/failure', '', true));
